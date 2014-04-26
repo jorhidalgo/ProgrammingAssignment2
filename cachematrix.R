@@ -1,22 +1,21 @@
 ## Jorge Hidalgo - R Programming Assignment 
-## The function makeCacheMatrix creates a list with 4 functions and saves in cache the inverse matrix  
-## of the matrix passed as parameter
+## The function makeCacheMatrix creates a list with 4 functions one of the functions calculates the inverse of a matrix
+## another function retrieves the value saved in the global environment of the inverse matrix
 ## The function cacheSolve has as a parameter the list created by makeCacheMatrix and returns the inverse matrix
 ## cacheSolve will calculate the inverse matrix only if it was not calculate previously
 
 ## The makeCacheMatrix function receives as parameter a matrix and returns a list with 4 functions
-##  The makeCacheMatrix also calculates the inverse of the matrix passed as parameter and caches the result using 
-## the operator <<
+
 
 
 makeCacheMatrix <- function(x = matrix ()) {
   m <- NULL
   set <- function(y) {
     x <<- y
-    m <<- NULL
+    m <<- NULL                                                ## sets variable in global environment
   }
   get <- function() x
-  setsolve <- function(solve) m <<- solve                     ## the inverse matrix is calculated and saved in cache  
+  setsolve <- function(solve) m <<- solve                     ## creates function to calculate inverse matrix  
   getsolve <- function() m
   list(set = set, get = get,                                  ## create list with 4 functions 
        setsolve = setsolve,
